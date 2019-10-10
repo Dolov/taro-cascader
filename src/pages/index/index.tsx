@@ -1,6 +1,45 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
+import { AtTextarea, AtButton } from 'taro-ui'
+import Cascader from '../../components/index'
 import './index.scss'
+
+
+
+const data = [
+  {
+    label: '河南',
+    value: 'henan',
+    children: [{
+      label: '平顶山',
+      value: 'pingdingshan',
+      children: [{
+        label: '鲁山',
+        value: 'lushan',
+        children: [{
+          label: '张官营',
+          value: 'zhangguanying',
+        }]
+      }]
+    }]
+  },
+  {
+    label: '江苏',
+    value: 'jiangsu',
+    children: [{
+      label: '苏州',
+      value: '苏州',
+      children: [{
+        label: '工业园区',
+        value: 'gongyeyuanqu',
+        children: [{
+          label: '松泽',
+          value: 'songze',
+        }]
+      }]
+    }]
+  },
+]
 
 export default class Index extends Component {
 
@@ -25,10 +64,13 @@ export default class Index extends Component {
 
   componentDidHide () { }
 
+
   render () {
     return (
       <View className='index'>
-        <Text>Hello world!</Text>
+        <Cascader 
+          dataSource={data}
+        />
       </View>
     )
   }

@@ -1,0 +1,14 @@
+.index {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1;
+}
+
+.button {
+    border-top: 1px solid black;
+    height: 88px;
+}

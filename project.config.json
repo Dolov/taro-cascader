@@ -2,7 +2,7 @@
   "miniprogramRoot": "./dist",
   "projectname": "taro-cascader",
   "description": "基于 taro 的级联组件",
-  "appid": "touristappid",
+  "appid": "wx6260da497cbf05de",
   "setting": {
     "urlCheck": true,
     "es6": false,

@@ -8,6 +8,15 @@
     "typescript": true,
     "css": "sass"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dolov/taro-cascader"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "@types"
+  ],
   "scripts": {
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
@@ -24,7 +33,9 @@
     "dev:h5": "npm run build:h5 -- --watch",
     "dev:rn": "npm run build:rn -- --watch",
     "dev:qq": "npm run build:qq -- --watch",
-    "dev:quickapp": "npm run build:quickapp -- --watch"
+    "dev:quickapp": "npm run build:quickapp -- --watch",
+    "build": "TARO_BUILD_TYPE=ui taro build --ui",
+    "prepublish": "npm run build"
   },
   "author": "",
   "license": "MIT",

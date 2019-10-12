@@ -8,17 +8,17 @@ import './index.scss'
 
 const data = [
   {
-    label: '河南',
-    value: 'henan',
+    label: '北京',
+    value: 'beijing',
     children: [{
-      label: '平顶山',
-      value: 'pingdingshan',
+      label: '海淀',
+      value: 'haidian',
       children: [{
-        label: '鲁山',
-        value: 'lushan',
+        label: '清河',
+        value: 'qinghe',
         children: [{
-          label: '张官营',
-          value: 'zhangguanying',
+          label: '永泰庄',
+          value: 'yongtaizhuang',
           isLeaf: true,
         }]
       }]
@@ -34,8 +34,8 @@ const data = [
         label: '工业园区',
         value: 'gongyeyuanqu',
         children: [{
-          label: '松泽',
-          value: 'songze',
+          label: '金鸡湖',
+          value: 'jinjihu',
         }]
       }]
     }]
@@ -73,7 +73,7 @@ export default class Index extends Component {
     return new Promise(resolve => {
       setTimeout(() => {
         node.children = [
-          {label: '柴庄', value: 'chaizhuang'}
+          {label: '永泰东里', value: 'yongtaidongli'}
         ]
         resolve()
       }, 2000)

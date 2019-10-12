@@ -1,6 +1,6 @@
 {
   "name": "taro-cascader",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "description": "基于 taro 的级联组件",
   "templateInfo": {

@@ -2,6 +2,7 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { AtTextarea, AtButton } from 'taro-ui'
 import Cascader from '../../components/index'
+// import Cascader from 'taro-cascader'
 import './index.scss'
 
 

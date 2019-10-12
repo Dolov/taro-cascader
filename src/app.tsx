@@ -1,5 +1,6 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import Index from './pages/index'
+import '@tarojs/async-await'
 import 'taro-ui/dist/style/index.scss'
 import './app.scss'
 

@@ -19,6 +19,7 @@ const data = [
         children: [{
           label: '张官营',
           value: 'zhangguanying',
+          isLeaf: true,
         }]
       }]
     }]
@@ -68,6 +69,16 @@ export default class Index extends Component {
     console.log(value)
   }
 
+  loadData = node => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        node.children = [
+          {label: '柴庄', value: 'chaizhuang'}
+        ]
+        resolve()
+      }, 2000)
+    })
+  }
 
   render () {
     return (
@@ -75,6 +86,7 @@ export default class Index extends Component {
         <Cascader 
           dataSource={data}
           onChange={this.onChange}
+          loadData={this.loadData}
         />
       </View>
     )

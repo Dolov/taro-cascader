@@ -12,6 +12,7 @@ interface dataSource {
 interface ICascader {
 	dataSource: Array<dataSource>,
 	onChange: Function;
+	loadData?: Function;
 }
 
 const clsPrefix = 'cp-cascader'
@@ -60,13 +61,13 @@ export default class Cascader extends Taro.PureComponent<ICascader> {
 		onChange(ids)
 	}
 
-	lastChoosedValue: any = null
 	// 判断是否点击在已选中的节点
 	getIsRepeatClick(value): boolean {
-		if (this.lastChoosedValue === value) {
+		const { tabList } = this.state
+		const ids = tabList.map(item => item.value)
+		if (ids.includes(value)) {
 			return true
 		} 
-		this.lastChoosedValue = value
 		return false
 	}
 
@@ -102,22 +103,45 @@ export default class Cascader extends Taro.PureComponent<ICascader> {
 	}
 
 	// 选中后是否添加下级 Tab
-	handleNextTab(newTabList, target) {
-		const { children } = target
+	handleNextTab = async (newTabList, target) => {
+		const { children, isLeaf } = target
+		const { loadData } = this.props
 		const { currentTabIndex } = this.state
 		if (
 			Array.isArray(children) && 
 			children.length > 0
 		) {
-			newTabList.push({
-				title: defaultTitle,
-				value: defaultValue,
-				dataSource: children
-			})
-			this.setState({
-				currentTabIndex: currentTabIndex + 1
-			})
-		} 
+			this.addTab(newTabList, children, currentTabIndex)
+		} else {
+			if (typeof loadData === 'function' && isLeaf) {
+				this.addTab(newTabList, [], currentTabIndex)
+				const lastTab = newTabList[newTabList.length - 1]
+				newTabList[newTabList.length - 1] = {
+					...lastTab,
+					loading: true
+				}
+				this.forceUpdate()
+				await loadData(target)
+				const { children } = target
+				newTabList[newTabList.length - 1] = {
+					...lastTab,
+					loading: false,
+					dataSource: children,
+				}
+				this.forceUpdate()
+			}
+		}
+	}
+
+	addTab(newTabList, children, currentTabIndex) {
+		newTabList.push({
+			title: defaultTitle,
+			value: defaultValue,
+			dataSource: children
+		})
+		this.setState({
+			currentTabIndex: currentTabIndex + 1
+		})
 	}
 
 	render() {

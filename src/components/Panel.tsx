@@ -27,7 +27,6 @@ export default class Panel extends Taro.PureComponent<IPanel> {
 	render() {
     const { currentTabIndex, index, data } = this.props
     const { dataSource, value } = data || {}
-    console.log('render')
 		return (
 			<AtTabsPane current={currentTabIndex} index={index}>
         <AtRadio

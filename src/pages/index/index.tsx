@@ -64,12 +64,17 @@ export default class Index extends Component {
 
   componentDidHide () { }
 
+  onChange = (value) => {
+    console.log(value)
+  }
+
 
   render () {
     return (
       <View className='index'>
         <Cascader 
           dataSource={data}
+          onChange={this.onChange}
         />
       </View>
     )
